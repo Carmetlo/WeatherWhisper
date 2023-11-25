@@ -1,8 +1,9 @@
-const apiKey = '1517baaf9a9a7ffd971be9a80da4eedb';
-const geocodeURL = 'https://api.openweathermap.org/geo/1.0/direct?q='
+var apiKey = '1517baaf9a9a7ffd971be9a80da4eedb';
+const geocodeURL = 'https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}'
 
 function getCoordinates(city) {
-    fetch(url)
+    fetch(geocodeURL)
+    let url = geocodeURL.replace('{city name}', city).replace('{API key}', apiKey);
         .then(response => response.json())
         .then(data => {
             if (data.length > 0) {
