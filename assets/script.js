@@ -1,5 +1,5 @@
 const apiKey = 'Y6a6da27e7d121487b839ad8ea7dd1de0';
-const apiUrl = 'https://api.openweathermap.org/data/2.5/forecast';
+const apiUrl = 'https://api.openweathermap.org/data/2.5/';
 
 document.addEventListener('DOMContentLoaded', function () {
 
