@@ -2,7 +2,7 @@ var apiKey = '1517baaf9a9a7ffd971be9a80da4eedb';
 
 function getCoordinates(city) {
     const geocodeURL = 'http://api.openweathermap.org/geo/1.0/direct?q=' + encodeURIComponent(city) + '&limit=5&appid=' + apiKey;
-    
+
     return new Promise((resolve, reject) => {
         if (!city) {
             console.error('City is undefined or null.');
@@ -46,11 +46,27 @@ function getWeather(latitude, longitude, city) {
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            // updateCurrentWeather(data);
+            updateCurrentWeather(data);
             updateForecast(data, city);
             addToSearchHistory(city);
         })
         .catch(error => console.error('Error fetching data: ', error));
+}
+
+function updateCurrentWeather(data) {
+    console.log('Current Weather Data:', data);
+
+    if (data.city && data.list && data.list.length > 0) {
+        var card = $("<div>").addClass("card");
+        var cardTitle = $("<h2>").addClass("card-title").text(data.city.name)
+        var tempEl = $("<h3>").addClass("card-text").text("Temperature: " + Math.round(data.list[0].main.temp) + String.fromCharCode(186))
+        var humidtyEl = $("<h3>").addClass("card-text").text("Humidity: " + data.list[0].main.humidity + String.fromCharCode(37));
+        var windEl = $("<h3>").addClass("card-text").text("Wind Speed: " + data.list[0].wind.speed + " MPH");
+        var icon = $("<img>").attr("src", `https://openweathermap.org/img/wn/${data.list[0].weather[0].icon}@2x.png`);
+        $("#current-weather").empty().append(card.append(cardTitle.append(icon), tempEl, humidtyEl, windEl));
+    } else {
+        console.error('invalid data format for current weather:', data);
+    }
 }
 
 function updateForecast(data, city) {
@@ -89,15 +105,6 @@ searchHistoryEL.addEventListener('click', async function (event) {
     }
 });
 
-function updateCurrentWeather(data) {
-    var card = $("<div>").addClass("card");
-    var cardTitle = $("<h2>").addClass("card-title").text(data.name)
-    var tempEl = $("<h3>").addClass("card-text").text("Temperature: " + Math.round(data.main.temp) + String.fromCharCode(186))
-    var humidtyEl = $("<h3>").addClass("card-text").text("Humidity: " + data.main.humidity + String.fromCharCode(37))
-    var windEl = $("<h3>").addClass("card-text").text("Wind Speed: " + data.wind.speed + " MPH")
-    var icon = $("<img>").attr("src", `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`)
-    $("#current-weather").append(card.append(cardTitle.append(icon), tempEl, humidtyEl, windEl))
-}
 document.getElementById('search').addEventListener("submit", function (event) {
     event.preventDefault()
     var cityName = document.getElementById("city-input").value
