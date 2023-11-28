@@ -12,17 +12,19 @@ body {
 }
 
 h1 {
-    color: #007bff;
+    color: #f8f9fa;
+    font-size: 40px;
     background: linear-gradient(to right, #007bff 0%, #007bff 100%);/*gradient color effct*/
-    display: inline-block;
+    /* display: inline-block; */
     padding: 10px;
     border-radius: 5px;
     margin: 0 0 20px 0;
-    transform: skewX(-15deg);
+    transform: skewX(-20deg);
+    width: 100%;
 }
 
 form {
-    text-align: right;
+    text-align: left;
     margin-bottom: 20px;
 }
 
@@ -33,5 +35,5 @@ form {
 }
 
 #search-history {
-    text-align: right;
+    text-align: left;
 }
