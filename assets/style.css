@@ -12,11 +12,6 @@ body {
     padding: 20px;
 }
 
-.to-the-left,
-.to-the-right {
-    flex: 1;
-}
-
 h1 {
     color: #f8f9fa;
     font-size: 40px;
@@ -33,13 +28,3 @@ form {
     margin-bottom: 20px;
 }
 
-#current-weather,
-#forecast {
-    overflow-x: auto;
-    margin-bottom: 20px;
-    display: flex;
-}
-
-#search-history {
-    text-align: left;
-}
