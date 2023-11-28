@@ -18,5 +18,20 @@ h1 {
     padding: 10px;
     border-radius: 5px;
     margin: 0 0 20px 0;
+    transform: skewX(-15deg);
+}
 
+form {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+#current-weather,
+#forecast {
+    display: flex;
+    overflow-x: auto;
+}
+
+#search-history {
+    text-align: right;
 }
