@@ -5,7 +5,7 @@
 var apiKey = '1517baaf9a9a7ffd971be9a80da4eedb';
 // Function to get coordinates for a city
 function getCoordinates(city) {
-    const geocodeURL = 'http://api.openweathermap.org/geo/1.0/direct?q=' + encodeURIComponent(city) + '&limit=5&appid=' + apiKey;
+    const geocodeURL = 'https://api.openweathermap.org/geo/1.0/direct?q=' + encodeURIComponent(city) + '&limit=5&appid=' + apiKey;
     
     return new Promise((resolve, reject) => {
         if (!city) {
