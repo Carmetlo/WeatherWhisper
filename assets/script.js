@@ -106,11 +106,13 @@ function updateForecast(data, city) {
 const searchHistoryEL = document.getElementById('search-history');
 function addToSearchHistory(city) {
     let cities = JSON.parse(localStorage.getItem('cities')) || [];
-    if (!cities.includes(city)) {
+    city = city.toLowerCase();
+    if (!cities.map(city => city.toLowerCase()).includes(city)) {
         cities.push(city);
         localStorage.setItem('cities', JSON.stringify(cities));
+        searchHistoryEL.innerHTML += `<button class="city-button">${city}</button>`;
     }
-    searchHistoryEL.innerHTML += `<button class="city-button">${city}</button>`;
+    
 }
 // Function to load search history from local storage
 function loadSearchHistory() {
