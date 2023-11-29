@@ -9,23 +9,28 @@
     <link rel="stylesheet" href="assets/style.css">
     <title>Weather Dashboard</title>
 </head>
-
+<!-- Weather dashboard, main container -->
 <body>
     <h1>Weather Dashboard</h1>
     <div class="container">
         <div class="main-content">
+            <!-- This is where the left organized column starts -->
             <div class="to-the-left">
+                <!-- search button, city input, and clear history button -->
             <form id="search">
                 <label for="city-input">Search for a City:</label>
                 <input type="text" id="city-input" name="city-input" placeholder="City Name" required>
                 <button type="submit">Search</button>
                 <button id="clear-history">Clear Recent Cities</button>
             </form>
+            <!-- Divider to keep things organized -->
             <hr class="divider">
             <div id="search-history">
                 <h2>Recent Searches</h2>
             </div>
             </div>
+            <!-- This is where the right organized column starts
+            which include the current weather and forecast elements -->
             <div class="to-the-right">
                 <div id="current-weather">
                 </div>

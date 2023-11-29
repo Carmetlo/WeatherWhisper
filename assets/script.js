@@ -1,18 +1,22 @@
+// API key for OpenWeatherMap API
+//There were some issues with my original idea of how to get the API key to work. I was able to get it to work by using the following code. I also had to change the API key to the one I was given.
+//The main problem I had was making sure everything functioned properly.
+//I learned how to coordinate my css to communicate with the js elements that were created
 var apiKey = '1517baaf9a9a7ffd971be9a80da4eedb';
-
+// Function to get coordinates for a city
 function getCoordinates(city) {
     const geocodeURL = 'http://api.openweathermap.org/geo/1.0/direct?q=' + encodeURIComponent(city) + '&limit=5&appid=' + apiKey;
-
+    
     return new Promise((resolve, reject) => {
         if (!city) {
             console.error('City is undefined or null.');
             reject('No city provided');
             return;
         }
-
+        // Build URL for geocoding API
         let url = geocodeURL;
         console.log('Geocode URL:', url);
-
+        // Fetch coordinates for city
         fetch(url)
             .then(response => {
                 if (!response.ok) {
@@ -20,6 +24,7 @@ function getCoordinates(city) {
                 }
                 return response.json();
             })
+            
             .then(data => {
                 console.log('Geocode Response:', data);
                 if (data.length > 0) {
@@ -39,9 +44,10 @@ function getCoordinates(city) {
             });
     });
 }
+// Function to get weather data for a city
 function getWeather(latitude, longitude, city) {
     const apiUrl = 'https://api.openweathermap.org/data/2.5/forecast';
-
+    // Build URL for weather API
     fetch(`${apiUrl}?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`)
         .then(response => response.json())
         .then(data => {
@@ -52,7 +58,7 @@ function getWeather(latitude, longitude, city) {
         })
         .catch(error => console.error('Error fetching data: ', error));
 }
-
+// Function to update current weather
 function updateCurrentWeather(data) {
     console.log('Current Weather Data:', data);
 
@@ -70,11 +76,11 @@ function updateCurrentWeather(data) {
         console.error('invalid data format for current weather:', data);
     }
 }
-
+// Function to update forecast
 function updateForecast(data, city) {
     const forecastEL = document.getElementById('forecast');
     forecastEL.innerHTML = '';
-
+    
     forecastEL.innerHTML += '<h4>5-Day Forecast:</h4>';
 
     for (let i = 0; i < data.list.length; i += 8) {
@@ -96,8 +102,8 @@ function updateForecast(data, city) {
         `;
     }
 }
+// Function to add city to search history
 const searchHistoryEL = document.getElementById('search-history');
-
 function addToSearchHistory(city) {
     let cities = JSON.parse(localStorage.getItem('cities')) || [];
     if (!cities.includes(city)) {
@@ -106,7 +112,7 @@ function addToSearchHistory(city) {
     }
     searchHistoryEL.innerHTML += `<button class="city-button">${city}</button>`;
 }
-
+// Function to load search history from local storage
 function loadSearchHistory() {
     let cities = JSON.parse(localStorage.getItem('cities')) || [];
     for (let city of cities) {
@@ -115,7 +121,7 @@ function loadSearchHistory() {
 }
 
 document.addEventListener('DOMContentLoaded', loadSearchHistory);
-
+// Event listener for search history buttons
 searchHistoryEL.addEventListener('click', async function (event) {
     if (event.target.tagName === 'P') {
         const clickedCity = event.target.textContent;
@@ -123,13 +129,13 @@ searchHistoryEL.addEventListener('click', async function (event) {
         await getCoordinates(clickedCity);
     }
 });
-
+// Event listener for search form
 document.getElementById('search').addEventListener("submit", function (event) {
     event.preventDefault()
     var cityName = document.getElementById("city-input").value
     getCoordinates(cityName)
 })
-
+// Event listener for clear history button
 document.getElementById('clear-history').addEventListener('click', function () {
     localStorage.removeItem('cities');
 
