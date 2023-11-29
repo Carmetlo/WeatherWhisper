@@ -132,7 +132,7 @@ document.getElementById('search').addEventListener("submit", function (event) {
 
 document.getElementById('clear-history').addEventListener('click', function () {
     localStorage.removeItem('cities');
-    
-    let searchHistoryEL = document.getElementById('search-history');
-    searchHistoryEL.innerHTML = '';
-} );
+
+    let cityButtons = document.querySelectorAll('.city-button');
+    cityButtons.forEach(button => button.remove());
+});
