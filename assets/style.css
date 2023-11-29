@@ -1,6 +1,19 @@
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #0056b3;
+    --background-color: #f8f9fa;
+    --text-color: #f8f9fa;
+    --input-border-color: #007bff;
+    --button-background-color: #007bff;
+    --button-hover-color: #0056b3;
+    --forecast-background-color: #000047;
+    --city-button-background-color: lightgray;
+    --city-button-hover-color: lightblue;
+}
+
 body {
     font-family: 'arial', sans-serif;
-    background-color: #f8f9fa;
+    background-color: var(--background-color);
     margin: 0;
     padding: 0;
 }
@@ -15,15 +28,15 @@ body {
 
 h1 {
     color: #f8f9fa;
+    font-weight: bold;
     font-size: 40px;
-    background: linear-gradient(to right, #007bff 0%, #007bff 100%);/*gradient color effct*/    padding: 10px;
+    background: linear-gradient(to right, lightblue 0%, #033b77 100%);/*gradient color effct*/    padding: 10px;
     padding: 10px;
     border-radius: 5px;
-    margin: 0 0 20px 0;
-    transform: skewX(-20deg);
+    margin: 0 20px 20px auto;
     width: 100%;
     text-align: center;
-    width: 80%;
+    padding-left: 25%;
 }
 
 .main-content {
@@ -35,7 +48,6 @@ h1 {
 .to-the-right {
     display: flex;
     flex-direction: column;
-    border: 1px solid #007bff;
     padding: 20px;
 }
 
@@ -67,13 +79,15 @@ h1 {
 }
 
 .forecast-item {
+    color: #f8f9fa;
+    font-weight: bold;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: #ddd;
-    border: 1px solid #007bff;
+    align-items: center;
+    background-color: var(--forecast-background-color);
     border-radius: 5px;
-    padding: 50px;
+    padding: 20px;
     margin: 10px;
 }
 
@@ -86,8 +100,8 @@ h4 {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-    background-color: lightgray;
-    color: #black;
+    background-color: var(--city-button-background-color);
+    color: black;
     font-weight: bold;
     font-size: 18px;
     border: none;
@@ -97,12 +111,12 @@ h4 {
 }
 
 .city-button:hover {
-    background-color: lightblue;
+    background-color: var(--city-button-hover-color);
 }
 
 #city-input {
     padding: 10px;
-    border: 1px solid #007bff;
+    border: 1px solid var(--input-border-color);
     border-radius: 5px;
     width: 80%;
     margin-right: 10px;
@@ -112,14 +126,14 @@ button[type="submit"] {
     padding: 10px   20px;
     border: none;
     border-radius: 5px;
-    background-color: #007bff;
+    background-color: var(--button-background-color);
     color: #fff;
     cursor: pointer;
     width: 80%;
 }
 
 button[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: var(--button-hover-color);
 }
 
 .search {

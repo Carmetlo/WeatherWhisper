@@ -79,6 +79,7 @@ function updateForecast(data, city) {
 
     for (let i = 0; i < data.list.length; i += 8) {
         const date = new Date(data.list[i].dt * 1000);
+        const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
         const iconCode = data.list[i].weather[0].icon;
         const temperature = data.list[i].main.temp;
         const windSpeed = data.list[i].wind.speed;
@@ -86,11 +87,11 @@ function updateForecast(data, city) {
 
         forecastEL.innerHTML += `
             <div class="forecast-item">
-                <p>Date: ${date.toDateString()}</p>
+                <p> ${formattedDate}</p>
                 <img src="https://openweathermap.org/img/wn/${iconCode}@2x.png" alt="Weather Icon">
-                <p>temperature: ${temperature} &deg;F</p>
-                <p>wind speed: ${windSpeed} MPH</p>
-                <p>humidity: ${humidity} %</p>
+                <p>Temperature: ${temperature} &deg;F</p>
+                <p>Wind speed: ${windSpeed} MPH</p>
+                <p>Humidity: ${humidity} %</p>
             </div>
         `;
     }
