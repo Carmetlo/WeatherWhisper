@@ -11,30 +11,28 @@
 </head>
 
 <body>
+    <h1>Weather Dashboard</h1>
     <div class="container">
-        <h1>Weather Dashboard</h1>
         <div class="main-content">
-            <div class="to-the-left"></div>
+            <div class="to-the-left">
             <form id="search">
                 <label for="city-input">Search for a City:</label>
                 <input type="text" id="city-input" name="city-input" placeholder="City Name" required>
                 <button type="submit">Search</button>
             </form>
+            <hr class="divider">
             <div id="search-history">
                 <h2>Recent Searches</h2>
-
+            </div>
+            </div>
+            <div class="to-the-right">
+                <div id="current-weather">
+                </div>
+                <hr class="divider">
+                <div id="forecast">
+                </div>
             </div>
         </div>
-        <div class="to-the-right">
-            <div id="current-weather">
-                <h2>Current Weather:</h2>
-            </div>
-
-            <div id="forecast">
-
-            </div>
-        </div>
-    </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
         integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>

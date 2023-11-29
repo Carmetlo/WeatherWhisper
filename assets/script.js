@@ -71,7 +71,9 @@ function updateCurrentWeather(data) {
 
 function updateForecast(data, city) {
     const forecastEL = document.getElementById('forecast');
-    forecastEL.innerHTML = '<h2>5-Day Forecast:</h2>';
+    forecastEL.innerHTML = '';
+
+    forecastEL.innerHTML += '<h4>5-Day Forecast:</h4>';
 
     for (let i = 0; i < data.list.length; i += 8) {
         const date = new Date(data.list[i].dt * 1000);
