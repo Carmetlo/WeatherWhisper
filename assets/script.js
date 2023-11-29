@@ -123,7 +123,7 @@ function loadSearchHistory() {
 document.addEventListener('DOMContentLoaded', loadSearchHistory);
 // Event listener for search history buttons
 searchHistoryEL.addEventListener('click', async function (event) {
-    if (event.target.tagName === 'P') {
+    if (event.target.tagName === 'BUTTON') {
         const clickedCity = event.target.textContent;
         console.log(`Clicked ${clickedCity}`);
         await getCoordinates(clickedCity);
