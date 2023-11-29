@@ -77,3 +77,20 @@ h1 {
 h4 {
     width: 100%;
 }
+
+.city-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.city-button:hover {
+    background-color: #0056b3;
+}

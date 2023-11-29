@@ -58,7 +58,9 @@ function updateCurrentWeather(data) {
 
     if (data.city && data.list && data.list.length > 0) {
         var card = $("<div>").addClass("card");
-        var cardTitle = $("<h2>").addClass("card-title").text(data.city.name)
+        var date = new Date(data.list[0].dt * 1000);
+        var formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+        var cardTitle = $("<h2>").addClass("card-title").text(`${data.city.name} ${formattedDate}`)
         var tempEl = $("<h3>").addClass("card-text").text("Temperature: " + Math.round(data.list[0].main.temp) + String.fromCharCode(186))
         var humidtyEl = $("<h3>").addClass("card-text").text("Humidity: " + data.list[0].main.humidity + String.fromCharCode(37));
         var windEl = $("<h3>").addClass("card-text").text("Wind Speed: " + data.list[0].wind.speed + " MPH");
@@ -96,7 +98,7 @@ function updateForecast(data, city) {
 const searchHistoryEL = document.getElementById('search-history');
 
 function addToSearchHistory(city) {
-    searchHistoryEL.innerHTML += `<p>${city}</p>`;
+    searchHistoryEL.innerHTML += `<button class="city-button">${city}</button>`;
 }
 
 searchHistoryEL.addEventListener('click', async function (event) {
